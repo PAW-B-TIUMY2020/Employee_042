@@ -4,11 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h4>Employee Register</h4>
+<hr/>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -24,7 +23,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.OfficeLocation)
             </th>
-            <th></th>
+            <th>
+                <p>
+                    <a asp-action="AddOrEdit"><i class="far fa-plus-square"></i> Employee</a>
+                </p>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -43,11 +46,12 @@
                 @Html.DisplayFor(modelItem => item.OfficeLocation)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+
+                <a asp-action="Edit" asp-route-id="@item.EmployeeId"><i class="fas fa-pen-alt"></i></a>
+                <!--<a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |-->
+                <a asp-action="Delete" asp-route-id="@item.EmployeeId"><i style="color: red" class="fas fa-trash-alt"></i></a>
             </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </tr>
+    }
+        </tbody>
+    </table>

@@ -51,6 +51,20 @@ namespace Employee
                 app.UseHsts();
             }
 
+            app.Use(async (context, next) =>
+            {
+                var url = context.Request.Path.Value;
+
+                // Rewrite to index
+                if (url.Contains("/Employees/AddOrEdit"))
+                {
+                    // rewrite and continue processing
+                    context.Request.Path = "/Employees/Create";
+                }
+
+                await next();
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
